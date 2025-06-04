@@ -1,0 +1,2491 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/4/2025 4:20:35 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="OMEN"
+  DTS:CreatorName="OMEN\nchan"
+  DTS:DTSID="{3C604D73-3B4C-4064-8658-CEDB38FD89AE}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{DA2498F6-CFD7-4C66-B4DE-97692F50216C}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Omen]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{FAA3D30A-E58E-4D2C-8995-2BCDAD5EA146}"
+      DTS:ObjectName="Omen">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=Omen;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{FAA3D30A-E58E-4D2C-8995-2BCDAD5EA146}Omen;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Omen.TelecomChurn]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{5AF9A568-C3DB-4261-B506-9A491758D37D}"
+      DTS:ObjectName="Omen.TelecomChurn">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=Omen;Initial Catalog=TelecomChurn;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{5AF9A568-C3DB-4261-B506-9A491758D37D}Omen.TelecomChurn;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Omen.TelecomChurn 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{8B1BF4B5-1692-42FC-8E2E-26F101AF2AA0}"
+      DTS:ObjectName="Omen.TelecomChurn 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=Omen;Initial Catalog=TelecomChurn;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{8B1BF4B5-1692-42FC-8E2E-26F101AF2AA0}Omen.TelecomChurn 1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Omen.TelecomChurn 2]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{184538BC-2284-44A5-B4F1-5B4B8F005229}"
+      DTS:ObjectName="Omen.TelecomChurn 2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=Omen;Initial Catalog=TelecomChurn;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{184538BC-2284-44A5-B4F1-5B4B8F005229}Omen.TelecomChurn 2;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Omen.TelecomChurn 3]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{1A24A07F-5802-4604-BECF-66D60C326A5F}"
+      DTS:ObjectName="Omen.TelecomChurn 3">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=Omen;Initial Catalog=TelecomChurn;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{1A24A07F-5802-4604-BECF-66D60C326A5F}Omen.TelecomChurn 3;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\stg_bss_data"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{7EF655CF-3551-4868-9E31-377DC091319F}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="stg_bss_data"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\stg_bss_data\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\stg_bss_data\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\stg_bss_data\Derived Column.Inputs[Derived Column Input].Columns[Churn]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Churn"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[Churn]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\stg_bss_data\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\stg_bss_data\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\stg_bss_data\Derived Column.Outputs[Derived Column Output].Columns[is_churned]"
+                      dataType="i1"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\stg_bss_data\Derived Column.Outputs[Derived Column Output].Columns[is_churned]"
+                      name="is_churned"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_I1)(#{Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[Churn]} == "Yes" ? 1 : 0)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I1)(Churn == "Yes" ? 1 : 0)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\stg_bss_data\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\stg_bss_data\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\stg_bss_data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\stg_bss_data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\stg_bss_data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\stg_bss_data\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[staging].[bss_data]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\stg_bss_data\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Omen.TelecomChurn]"
+                  connectionManagerRefId="Package.ConnectionManagers[Omen.TelecomChurn]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[customerID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="customerID"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[customerID]"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[customerID]" />
+                    <inputColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[gender]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="gender"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[gender]"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[gender]" />
+                    <inputColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SeniorCitizen]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SeniorCitizen"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SeniorCitizen]"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[SeniorCitizen]" />
+                    <inputColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Partner]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Partner"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Partner]"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[Partner]" />
+                    <inputColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Dependents]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Dependents"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Dependents]"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[Dependents]" />
+                    <inputColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[tenure]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="tenure"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[tenure]"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[tenure]" />
+                    <inputColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PhoneService]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="PhoneService"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PhoneService]"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[PhoneService]" />
+                    <inputColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MultipleLines]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="MultipleLines"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MultipleLines]"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[MultipleLines]" />
+                    <inputColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[InternetService]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="InternetService"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[InternetService]"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[InternetService]" />
+                    <inputColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[OnlineSecurity]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="OnlineSecurity"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OnlineSecurity]"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[OnlineSecurity]" />
+                    <inputColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[OnlineBackup]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="OnlineBackup"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OnlineBackup]"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[OnlineBackup]" />
+                    <inputColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DeviceProtection]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="DeviceProtection"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DeviceProtection]"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[DeviceProtection]" />
+                    <inputColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TechSupport]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="TechSupport"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TechSupport]"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[TechSupport]" />
+                    <inputColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StreamingTV]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="StreamingTV"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StreamingTV]"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[StreamingTV]" />
+                    <inputColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StreamingMovies]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="StreamingMovies"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StreamingMovies]"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[StreamingMovies]" />
+                    <inputColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Contract]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Contract"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Contract]"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[Contract]" />
+                    <inputColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PaperlessBilling]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="PaperlessBilling"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PaperlessBilling]"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[PaperlessBilling]" />
+                    <inputColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PaymentMethod]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="PaymentMethod"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PaymentMethod]"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[PaymentMethod]" />
+                    <inputColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MonthlyCharges]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="MonthlyCharges"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MonthlyCharges]"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[MonthlyCharges]" />
+                    <inputColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TotalCharges]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="TotalCharges"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalCharges]"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[TotalCharges]" />
+                    <inputColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Churn]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Churn"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Churn]"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[Churn]" />
+                    <inputColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[is_churned]"
+                      cachedDataType="i1"
+                      cachedName="is_churned"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[is_churned]"
+                      lineageId="Package\stg_bss_data\Derived Column.Outputs[Derived Column Output].Columns[is_churned]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[customerID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="customerID" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="gender" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SeniorCitizen]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SeniorCitizen" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Partner]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Partner" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Dependents]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Dependents" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[tenure]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="tenure" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PhoneService]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PhoneService" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MultipleLines]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="MultipleLines" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[InternetService]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="InternetService" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OnlineSecurity]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="OnlineSecurity" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OnlineBackup]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="OnlineBackup" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DeviceProtection]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DeviceProtection" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TechSupport]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="TechSupport" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StreamingTV]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="StreamingTV" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StreamingMovies]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="StreamingMovies" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Contract]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Contract" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PaperlessBilling]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PaperlessBilling" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PaymentMethod]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PaymentMethod" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MonthlyCharges]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="MonthlyCharges" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalCharges]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="TotalCharges" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Churn]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Churn" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[is_churned]"
+                      dataType="i2"
+                      name="is_churned" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\stg_bss_data\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\stg_bss_data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\stg_bss_data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\stg_bss_data\OLE DB Source 1"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source 1"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[landing].[bss_churn_data]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\stg_bss_data\OLE DB Source 1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Omen.TelecomChurn]"
+                  connectionManagerRefId="Package.ConnectionManagers[Omen.TelecomChurn]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[customerID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[customerID]"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[customerID]"
+                      name="customerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[gender]"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[gender]"
+                      name="gender"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[SeniorCitizen]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[SeniorCitizen]"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[SeniorCitizen]"
+                      name="SeniorCitizen"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[Partner]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[Partner]"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[Partner]"
+                      name="Partner"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[Dependents]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[Dependents]"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[Dependents]"
+                      name="Dependents"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[tenure]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[tenure]"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[tenure]"
+                      name="tenure"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[PhoneService]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[PhoneService]"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[PhoneService]"
+                      name="PhoneService"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[MultipleLines]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[MultipleLines]"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[MultipleLines]"
+                      name="MultipleLines"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[InternetService]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[InternetService]"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[InternetService]"
+                      name="InternetService"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[OnlineSecurity]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[OnlineSecurity]"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[OnlineSecurity]"
+                      name="OnlineSecurity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[OnlineBackup]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[OnlineBackup]"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[OnlineBackup]"
+                      name="OnlineBackup"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[DeviceProtection]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[DeviceProtection]"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[DeviceProtection]"
+                      name="DeviceProtection"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[TechSupport]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[TechSupport]"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[TechSupport]"
+                      name="TechSupport"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[StreamingTV]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[StreamingTV]"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[StreamingTV]"
+                      name="StreamingTV"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[StreamingMovies]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[StreamingMovies]"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[StreamingMovies]"
+                      name="StreamingMovies"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[Contract]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[Contract]"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[Contract]"
+                      name="Contract"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[PaperlessBilling]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[PaperlessBilling]"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[PaperlessBilling]"
+                      name="PaperlessBilling"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[PaymentMethod]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[PaymentMethod]"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[PaymentMethod]"
+                      name="PaymentMethod"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[MonthlyCharges]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[MonthlyCharges]"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[MonthlyCharges]"
+                      name="MonthlyCharges"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[TotalCharges]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[TotalCharges]"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[TotalCharges]"
+                      name="TotalCharges"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[Churn]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[Churn]"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[Churn]"
+                      name="Churn"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[customerID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="customerID" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="gender" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[SeniorCitizen]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SeniorCitizen" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[Partner]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Partner" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[Dependents]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Dependents" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[tenure]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="tenure" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[PhoneService]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PhoneService" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[MultipleLines]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="MultipleLines" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[InternetService]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="InternetService" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[OnlineSecurity]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="OnlineSecurity" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[OnlineBackup]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="OnlineBackup" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[DeviceProtection]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DeviceProtection" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[TechSupport]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="TechSupport" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[StreamingTV]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="StreamingTV" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[StreamingMovies]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="StreamingMovies" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[Contract]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Contract" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[PaperlessBilling]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PaperlessBilling" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[PaymentMethod]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PaymentMethod" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[MonthlyCharges]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="MonthlyCharges" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[TotalCharges]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="TotalCharges" />
+                    <externalMetadataColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[Churn]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Churn" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[customerID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[customerID]"
+                      name="customerID" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[gender]"
+                      name="gender" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[SeniorCitizen]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[SeniorCitizen]"
+                      name="SeniorCitizen" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[Partner]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[Partner]"
+                      name="Partner" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[Dependents]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[Dependents]"
+                      name="Dependents" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[tenure]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[tenure]"
+                      name="tenure" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[PhoneService]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[PhoneService]"
+                      name="PhoneService" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[MultipleLines]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[MultipleLines]"
+                      name="MultipleLines" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[InternetService]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[InternetService]"
+                      name="InternetService" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[OnlineSecurity]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[OnlineSecurity]"
+                      name="OnlineSecurity" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[OnlineBackup]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[OnlineBackup]"
+                      name="OnlineBackup" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[DeviceProtection]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[DeviceProtection]"
+                      name="DeviceProtection" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[TechSupport]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[TechSupport]"
+                      name="TechSupport" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[StreamingTV]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[StreamingTV]"
+                      name="StreamingTV" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[StreamingMovies]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[StreamingMovies]"
+                      name="StreamingMovies" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[Contract]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[Contract]"
+                      name="Contract" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[PaperlessBilling]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[PaperlessBilling]"
+                      name="PaperlessBilling" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[PaymentMethod]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[PaymentMethod]"
+                      name="PaymentMethod" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[MonthlyCharges]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[MonthlyCharges]"
+                      name="MonthlyCharges" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[TotalCharges]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[TotalCharges]"
+                      name="TotalCharges" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[Churn]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[Churn]"
+                      name="Churn" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\stg_bss_data.Paths[Derived Column Output]"
+              endId="Package\stg_bss_data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\stg_bss_data\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\stg_bss_data.Paths[OLE DB Source Output]"
+              endId="Package\stg_bss_data\Derived Column.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\stg_bss_data\OLE DB Source 1.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\stg_complaints_data"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{8423A4E8-F761-4090-A0E7-F7550BE7CC94}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="stg_complaints_data"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\stg_complaints_data\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\stg_complaints_data\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\stg_complaints_data\Derived Column.Inputs[Derived Column Input].Columns[dropped_calls]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="dropped_calls"
+                      lineageId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[dropped_calls]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\stg_complaints_data\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\stg_complaints_data\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\stg_complaints_data\Derived Column.Outputs[Derived Column Output].Columns[has_drop]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\stg_complaints_data\Derived Column.Outputs[Derived Column Output].Columns[has_drop]"
+                      name="has_drop"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_I4)#{Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[dropped_calls]} &gt; 0 ? 1 : 0</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I4)dropped_calls &gt; 0 ? 1 : 0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\stg_complaints_data\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\stg_complaints_data\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\stg_complaints_data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\stg_complaints_data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\stg_complaints_data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\stg_complaints_data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\stg_complaints_data\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[landing].[stg_network_data]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\stg_complaints_data\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Omen.TelecomChurn]"
+                  connectionManagerRefId="Package.ConnectionManagers[Omen.TelecomChurn]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\stg_complaints_data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\stg_complaints_data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[date]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="date"
+                      externalMetadataColumnId="Package\stg_complaints_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date]"
+                      lineageId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[date]" />
+                    <inputColumn
+                      refId="Package\stg_complaints_data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[customerID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="customerID"
+                      externalMetadataColumnId="Package\stg_complaints_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[customerID]"
+                      lineageId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[customerID]" />
+                    <inputColumn
+                      refId="Package\stg_complaints_data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[total_calls]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="total_calls"
+                      externalMetadataColumnId="Package\stg_complaints_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[total_calls]"
+                      lineageId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[total_calls]" />
+                    <inputColumn
+                      refId="Package\stg_complaints_data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[dropped_calls]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="dropped_calls"
+                      externalMetadataColumnId="Package\stg_complaints_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[dropped_calls]"
+                      lineageId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[dropped_calls]" />
+                    <inputColumn
+                      refId="Package\stg_complaints_data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[data_volume_MB]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="data_volume_MB"
+                      externalMetadataColumnId="Package\stg_complaints_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[data_volume_MB]"
+                      lineageId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[data_volume_MB]" />
+                    <inputColumn
+                      refId="Package\stg_complaints_data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[throughput_Mbps]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="throughput_Mbps"
+                      externalMetadataColumnId="Package\stg_complaints_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[throughput_Mbps]"
+                      lineageId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[throughput_Mbps]" />
+                    <inputColumn
+                      refId="Package\stg_complaints_data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[has_drop]"
+                      cachedDataType="i4"
+                      cachedName="has_drop"
+                      externalMetadataColumnId="Package\stg_complaints_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[has_drop]"
+                      lineageId="Package\stg_complaints_data\Derived Column.Outputs[Derived Column Output].Columns[has_drop]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\stg_complaints_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="date" />
+                    <externalMetadataColumn
+                      refId="Package\stg_complaints_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[customerID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="customerID" />
+                    <externalMetadataColumn
+                      refId="Package\stg_complaints_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[total_calls]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="total_calls" />
+                    <externalMetadataColumn
+                      refId="Package\stg_complaints_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[dropped_calls]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="dropped_calls" />
+                    <externalMetadataColumn
+                      refId="Package\stg_complaints_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[data_volume_MB]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="data_volume_MB" />
+                    <externalMetadataColumn
+                      refId="Package\stg_complaints_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[throughput_Mbps]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="throughput_Mbps" />
+                    <externalMetadataColumn
+                      refId="Package\stg_complaints_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[has_drop]"
+                      dataType="i4"
+                      name="has_drop" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\stg_complaints_data\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\stg_complaints_data\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\stg_complaints_data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\stg_complaints_data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\stg_complaints_data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\stg_complaints_data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\stg_complaints_data\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[landing].[network_usage]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\stg_complaints_data\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Omen.TelecomChurn]"
+                  connectionManagerRefId="Package.ConnectionManagers[Omen.TelecomChurn]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[date]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[date]"
+                      length="50"
+                      lineageId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[date]"
+                      name="date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[customerID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[customerID]"
+                      length="50"
+                      lineageId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[customerID]"
+                      name="customerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[total_calls]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[total_calls]"
+                      length="50"
+                      lineageId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[total_calls]"
+                      name="total_calls"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[dropped_calls]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[dropped_calls]"
+                      length="50"
+                      lineageId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[dropped_calls]"
+                      name="dropped_calls"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[data_volume_MB]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[data_volume_MB]"
+                      length="50"
+                      lineageId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[data_volume_MB]"
+                      name="data_volume_MB"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[throughput_Mbps]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[throughput_Mbps]"
+                      length="50"
+                      lineageId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[throughput_Mbps]"
+                      name="throughput_Mbps"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="date" />
+                    <externalMetadataColumn
+                      refId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[customerID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="customerID" />
+                    <externalMetadataColumn
+                      refId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[total_calls]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="total_calls" />
+                    <externalMetadataColumn
+                      refId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[dropped_calls]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="dropped_calls" />
+                    <externalMetadataColumn
+                      refId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[data_volume_MB]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="data_volume_MB" />
+                    <externalMetadataColumn
+                      refId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[throughput_Mbps]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="throughput_Mbps" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[date]"
+                      name="date" />
+                    <outputColumn
+                      refId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[customerID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[customerID]"
+                      name="customerID" />
+                    <outputColumn
+                      refId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[total_calls]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[total_calls]"
+                      name="total_calls" />
+                    <outputColumn
+                      refId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[dropped_calls]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[dropped_calls]"
+                      name="dropped_calls" />
+                    <outputColumn
+                      refId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[data_volume_MB]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[data_volume_MB]"
+                      name="data_volume_MB" />
+                    <outputColumn
+                      refId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[throughput_Mbps]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[throughput_Mbps]"
+                      name="throughput_Mbps" />
+                    <outputColumn
+                      refId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\stg_complaints_data.Paths[Derived Column Output]"
+              endId="Package\stg_complaints_data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\stg_complaints_data\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\stg_complaints_data.Paths[OLE DB Source Output]"
+              endId="Package\stg_complaints_data\Derived Column.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\stg_complaints_data\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\stg_network_data"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{83C4D85B-3076-4FF4-A95C-1429FCFCD97A}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="stg_network_data"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\stg_network_data\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\stg_network_data\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\stg_network_data\Derived Column.Inputs[Derived Column Input].Columns[status]"
+                      cachedDataType="nText"
+                      cachedName="status"
+                      lineageId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[status]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\stg_network_data\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\stg_network_data\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\stg_network_data\Derived Column.Outputs[Derived Column Output].Columns[status_stage]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\stg_network_data\Derived Column.Outputs[Derived Column Output].Columns[status_stage]"
+                      name="status_stage"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_WSTR,50)#{Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[status]} == "Open" ? "Open 0" : (DT_WSTR,50)#{Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[status]} == "In Progress" ? "In Progress 1" : (DT_WSTR,50)#{Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[status]} == "Resolved" ? "Resolved 2" : (DT_WSTR,50)#{Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[status]} == "Closed" ? "Closed 3" : (DT_WSTR,50)#{Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[status]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_WSTR,50)status == "Open" ? "Open 0" : (DT_WSTR,50)status == "In Progress" ? "In Progress 1" : (DT_WSTR,50)status == "Resolved" ? "Resolved 2" : (DT_WSTR,50)status == "Closed" ? "Closed 3" : (DT_WSTR,50)status</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\stg_network_data\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\stg_network_data\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\stg_network_data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\stg_network_data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\stg_network_data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\stg_network_data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\stg_network_data\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[staging].[stg_complaint_data]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\stg_network_data\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Omen.TelecomChurn]"
+                  connectionManagerRefId="Package.ConnectionManagers[Omen.TelecomChurn]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\stg_network_data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\stg_network_data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[complaint_id]"
+                      cachedDataType="nText"
+                      cachedName="complaint_id"
+                      externalMetadataColumnId="Package\stg_network_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[complaint_id]"
+                      lineageId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[complaint_id]" />
+                    <inputColumn
+                      refId="Package\stg_network_data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[customerID]"
+                      cachedDataType="nText"
+                      cachedName="customerID"
+                      externalMetadataColumnId="Package\stg_network_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[customerID]"
+                      lineageId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[customerID]" />
+                    <inputColumn
+                      refId="Package\stg_network_data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[date]"
+                      cachedDataType="nText"
+                      cachedName="date"
+                      externalMetadataColumnId="Package\stg_network_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date]"
+                      lineageId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[date]" />
+                    <inputColumn
+                      refId="Package\stg_network_data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[issue]"
+                      cachedDataType="nText"
+                      cachedName="issue"
+                      externalMetadataColumnId="Package\stg_network_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[issue]"
+                      lineageId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[issue]" />
+                    <inputColumn
+                      refId="Package\stg_network_data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[status]"
+                      cachedDataType="nText"
+                      cachedName="status"
+                      externalMetadataColumnId="Package\stg_network_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[status]"
+                      lineageId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[status]" />
+                    <inputColumn
+                      refId="Package\stg_network_data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[status_stage]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="status_stage"
+                      externalMetadataColumnId="Package\stg_network_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[status_stage]"
+                      lineageId="Package\stg_network_data\Derived Column.Outputs[Derived Column Output].Columns[status_stage]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\stg_network_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[complaint_id]"
+                      dataType="nText"
+                      name="complaint_id" />
+                    <externalMetadataColumn
+                      refId="Package\stg_network_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[customerID]"
+                      dataType="nText"
+                      name="customerID" />
+                    <externalMetadataColumn
+                      refId="Package\stg_network_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date]"
+                      dataType="nText"
+                      name="date" />
+                    <externalMetadataColumn
+                      refId="Package\stg_network_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[issue]"
+                      dataType="nText"
+                      name="issue" />
+                    <externalMetadataColumn
+                      refId="Package\stg_network_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[status]"
+                      dataType="nText"
+                      name="status" />
+                    <externalMetadataColumn
+                      refId="Package\stg_network_data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[status_stage]"
+                      dataType="wstr"
+                      length="50"
+                      name="status_stage" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\stg_network_data\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\stg_network_data\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\stg_network_data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\stg_network_data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\stg_network_data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\stg_network_data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\stg_network_data\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[landing].[complaints_data]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\stg_network_data\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Omen.TelecomChurn]"
+                  connectionManagerRefId="Package.ConnectionManagers[Omen.TelecomChurn]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[complaint_id]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[complaint_id]"
+                      lineageId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[complaint_id]"
+                      name="complaint_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[customerID]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[customerID]"
+                      lineageId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[customerID]"
+                      name="customerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[date]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[date]"
+                      lineageId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[date]"
+                      name="date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[issue]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[issue]"
+                      lineageId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[issue]"
+                      name="issue"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[status]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[status]"
+                      lineageId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Output].Columns[status]"
+                      name="status"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Unnamed: 0]"
+                      dataType="nText"
+                      name="Unnamed: 0" />
+                    <externalMetadataColumn
+                      refId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[complaint_id]"
+                      dataType="nText"
+                      name="complaint_id" />
+                    <externalMetadataColumn
+                      refId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[customerID]"
+                      dataType="nText"
+                      name="customerID" />
+                    <externalMetadataColumn
+                      refId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[date]"
+                      dataType="nText"
+                      name="date" />
+                    <externalMetadataColumn
+                      refId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[issue]"
+                      dataType="nText"
+                      name="issue" />
+                    <externalMetadataColumn
+                      refId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[status]"
+                      dataType="nText"
+                      name="status" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[complaint_id]"
+                      dataType="nText"
+                      lineageId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[complaint_id]"
+                      name="complaint_id" />
+                    <outputColumn
+                      refId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[customerID]"
+                      dataType="nText"
+                      lineageId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[customerID]"
+                      name="customerID" />
+                    <outputColumn
+                      refId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[date]"
+                      dataType="nText"
+                      lineageId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[date]"
+                      name="date" />
+                    <outputColumn
+                      refId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[issue]"
+                      dataType="nText"
+                      lineageId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[issue]"
+                      name="issue" />
+                    <outputColumn
+                      refId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[status]"
+                      dataType="nText"
+                      lineageId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[status]"
+                      name="status" />
+                    <outputColumn
+                      refId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\stg_network_data.Paths[Derived Column Output]"
+              endId="Package\stg_network_data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\stg_network_data\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\stg_network_data.Paths[OLE DB Source Output]"
+              endId="Package\stg_network_data\Derived Column.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\stg_network_data\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="141.333333333334,42.6666666666667"
+          Id="Package\stg_bss_data"
+          TopLeft="76.2499965913595,112.449994637966" />
+        <NodeLayout
+          Size="176,42.6666666666667"
+          Id="Package\stg_complaints_data"
+          TopLeft="469.999978989363,269.099987168313" />
+        <NodeLayout
+          Size="164,42.6666666666667"
+          Id="Package\stg_network_data"
+          TopLeft="208.749990668148,226.199989213944" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\stg_bss_data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="172,42.6666666666667"
+          Id="Package\stg_bss_data\OLE DB Destination"
+          TopLeft="210.624990584329,249.599988098145" />
+        <NodeLayout
+          Size="160,42.6666666666667"
+          Id="Package\stg_bss_data\OLE DB Source 1"
+          TopLeft="214.374990416691,82.5499960637094" />
+        <NodeLayout
+          Size="154.666666666667,42.6666666666667"
+          Id="Package\stg_bss_data\Derived Column"
+          TopLeft="218.124990249053,167.049992034436" />
+        <EdgeLayout
+          Id="Package\stg_bss_data.Paths[OLE DB Source Output]"
+          TopLeft="294.916656999539,125.216662730376">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.8333293040595"
+              Start="0,0"
+              End="0,34.3333293040595">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.3333293040595" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\stg_bss_data.Paths[Derived Column Output]"
+          TopLeft="296.041657083358,209.716658701102">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39.8833293970428"
+              Start="0,0"
+              End="0,32.3833293970428">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.3833293970428" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\stg_bss_data\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\stg_bss_data\OLE DB Source 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\stg_complaints_data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150.666666666667,46.6666666666667"
+          Id="Package\stg_complaints_data\OLE DB Source"
+          TopLeft="281.999991595745,128.9999961555" />
+        <NodeLayout
+          Size="154.666666666667,42.6666666666667"
+          Id="Package\stg_complaints_data\Derived Column"
+          TopLeft="276.999991744757,221.999993383885" />
+        <NodeLayout
+          Size="172,42.6666666666667"
+          Id="Package\stg_complaints_data\OLE DB Destination"
+          TopLeft="266.99999204278,318.999990493059" />
+        <EdgeLayout
+          Id="Package\stg_complaints_data.Paths[OLE DB Source Output]"
+          TopLeft="355.833325003584,175.666662822167">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46.3333305617183"
+              Start="0,0"
+              End="0,38.8333305617183">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.8333305617183" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\stg_complaints_data.Paths[Derived Column Output]"
+          TopLeft="353.666658560435,264.666660050552">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54.3333304425073"
+              Start="0,0"
+              End="0,46.8333304425073">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.8333304425073" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\stg_complaints_data\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\stg_complaints_data\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\stg_network_data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150.666666666667,42.6666666666667"
+          Id="Package\stg_network_data\OLE DB Source"
+          TopLeft="272.999991863966,51.9999984502792" />
+        <NodeLayout
+          Size="154.666666666667,42.6666666666667"
+          Id="Package\stg_network_data\Derived Column"
+          TopLeft="268.999991983175,137.99999588728" />
+        <NodeLayout
+          Size="172,42.6666666666667"
+          Id="Package\stg_network_data\OLE DB Destination"
+          TopLeft="262.999992161989,228.999993175268" />
+        <EdgeLayout
+          Id="Package\stg_network_data.Paths[OLE DB Source Output]"
+          TopLeft="347.333325256904,94.6666651169459">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43.3333307703337"
+              Start="0,0"
+              End="0,35.8333307703337">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.8333307703337" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\stg_network_data.Paths[Derived Column Output]"
+          TopLeft="347.666658739249,180.666662553947">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48.3333306213214"
+              Start="0,0"
+              End="0,40.8333306213214">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.8333306213214" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\stg_network_data\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\stg_network_data\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
