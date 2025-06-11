@@ -2,7 +2,7 @@
 <BuildLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <ProjectInfo>
     <Name>TelecomChurn</Name>
-    <LastWriteTime>2025-06-04T22:29:00.2817311Z</LastWriteTime>
+    <LastWriteTime>2025-06-10T20:38:00.7921672Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
@@ -18,12 +18,12 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>load_network_usage.dtsx</Name>
-      <LastWriteTime>2025-06-03T23:22:14.5472217Z</LastWriteTime>
+      <LastWriteTime>2025-06-10T20:38:00.7607033Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>load_staging_tables.dtsx</Name>
-      <LastWriteTime>2025-06-04T23:45:32.3443149Z</LastWriteTime>
+      <LastWriteTime>2025-06-10T20:59:42.7647745Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
