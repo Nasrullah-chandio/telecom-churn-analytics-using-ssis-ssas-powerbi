@@ -1,0 +1,1 @@
+Total Customers count:= COUNTROWS(dim_customer)

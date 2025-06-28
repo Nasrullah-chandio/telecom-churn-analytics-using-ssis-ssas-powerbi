@@ -1,0 +1,5 @@
+Unresolved Complaints:=
+CALCULATE(
+    COUNTROWS(fact_complaints),
+    fact_complaints[status] IN { "In Progress", "Open" }
+)

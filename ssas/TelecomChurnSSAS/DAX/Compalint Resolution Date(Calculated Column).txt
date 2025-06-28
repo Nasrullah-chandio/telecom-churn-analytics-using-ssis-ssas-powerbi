@@ -1,0 +1,11 @@
+=
+VAR IsChurned =
+    RELATED(dim_customer[is_churned])
+VAR RandomOffset =
+    IF(
+        IsChurned = TRUE(),
+        RANDBETWEEN(1, 7),         -- slower resolution for churned
+        RANDBETWEEN(1, 4)          -- faster for non-churned
+    )
+RETURN
+    dim_complaint[complaint_date] + RandomOffset

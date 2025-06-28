@@ -1,0 +1,5 @@
+Total Churned Customers:=
+CALCULATE(
+    COUNTROWS(dim_customer),
+    dim_customer[is_churned] = TRUE
+)

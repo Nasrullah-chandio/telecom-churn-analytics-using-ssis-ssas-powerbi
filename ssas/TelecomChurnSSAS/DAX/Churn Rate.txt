@@ -1,0 +1,5 @@
+Churn Rate (%):=
+DIVIDE(
+    [Total Churned Customers],
+    [Total Customers Count]
+) * 100

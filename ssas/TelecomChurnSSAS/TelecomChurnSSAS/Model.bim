@@ -56,6 +56,59 @@
             "dataType": "string",
             "sourceColumn": "status_stage",
             "sourceProviderType": "Char"
+          },
+          {
+            "type": "calculated",
+            "name": "Latest Date",
+            "expression": [
+              "",
+              "VAR ParsedDates =",
+              "    ADDCOLUMNS(",
+              "        dim_complaint,",
+              "        \"ParsedDate\", TRY(DATEVALUE(dim_complaint[complaint_date]))",
+              "    )",
+              "RETURN",
+              "    MAXX(ParsedDates, [ParsedDate]) + 2",
+              ""
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "Simulated_Resolution_Date",
+            "dataType": "double",
+            "isDataTypeInferred": true,
+            "expression": [
+              "",
+              "VAR IsChurned =",
+              "    RELATED(dim_customer[is_churned])",
+              "VAR RandomOffset =",
+              "    IF(",
+              "        IsChurned = TRUE(),",
+              "        RANDBETWEEN(1, 7),         -- slower resolution for churned",
+              "        RANDBETWEEN(1, 4)          -- faster for non-churned",
+              "    )",
+              "RETURN",
+              "    dim_complaint[complaint_date] + RandomOffset",
+              ""
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "Number of days to complaint resolution",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": [
+              "",
+              "VAR IsChurned =",
+              "    RELATED(dim_customer[is_churned])",
+              "RETURN",
+              "    IF(",
+              "        IsChurned = TRUE(),",
+              "        RANDBETWEEN(5, 7),",
+              "        RANDBETWEEN(1, 4)",
+              "    )",
+              ""
+            ]
           }
         ],
         "partitions": [
@@ -214,6 +267,85 @@
             "sourceColumn": "is_churned",
             "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
             "sourceProviderType": "Boolean"
+          },
+          {
+            "type": "calculated",
+            "name": "Churn Flag",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": [
+              " IF(dim_customer[is_churned] = TRUE(), \"Yes\", \"No\")",
+              ""
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "Tenure Group",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": [
+              " ",
+              "SWITCH(",
+              "    TRUE(),",
+              "    [tenure] < 12, \"< 1 year\",",
+              "    [tenure] < 24, \"< 2 years\",",
+              "    [tenure] < 36, \"< 3 years\",",
+              "    [tenure] < 48, \"< 4 years\",",
+              "    [tenure] < 60, \"< 5 years\",",
+              "    [tenure] < 72, \"< 6 years\",",
+              "    \"6+ years\"",
+              ")",
+              ""
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "Number of Complaints per customer",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": [
+              " CALCULATE(",
+              "    COUNTROWS(dim_complaint),",
+              "    FILTER(",
+              "        dim_complaint,",
+              "        dim_complaint[customerID] = dim_customer[customerID]",
+              "    )",
+              ")",
+              ""
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "Number of unresolved complaints per customer",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": [
+              " CALCULATE(",
+              "    COUNTROWS(dim_complaint),",
+              "    FILTER(",
+              "        dim_complaint,",
+              "        dim_complaint[customerID] = EARLIER(dim_customer[customerID]) &&",
+              "        dim_complaint[status] IN { \"Open\", \"In Progress\" }",
+              "    )",
+              ")",
+              ""
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "MonthlyChargesBin",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": [
+              " ",
+              "SWITCH(",
+              "    TRUE(),",
+              "    [MonthlyCharges] < 35, \"Low\",",
+              "    [MonthlyCharges] < 75, \"Medium\",",
+              "    \"High\"",
+              ")",
+              ""
+            ]
           }
         ],
         "partitions": [
@@ -225,6 +357,37 @@
               "query": " \t\t\t\tSELECT [dwh].[dim_customer].*   FROM [dwh].[dim_customer] ",
               "dataSource": "SqlServer Omen TelecomChurn"
             }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Total Churned Customers",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    COUNTROWS(dim_customer),",
+              "    dim_customer[is_churned] = TRUE",
+              ")",
+              ""
+            ]
+          },
+          {
+            "name": "Total Customers count",
+            "expression": [
+              " COUNTROWS(dim_customer)",
+              ""
+            ]
+          },
+          {
+            "name": "Churn Rate (%)",
+            "expression": [
+              "",
+              "DIVIDE(",
+              "    [Total Churned Customers],",
+              "    [Total Customers Count]",
+              ") * 100",
+              ""
+            ]
           }
         ],
         "annotations": [
@@ -384,6 +547,15 @@
             }
           }
         ],
+        "measures": [
+          {
+            "name": "Total Customers",
+            "expression": [
+              " DISTINCTCOUNT(fact_bss_churn_data[customerID])",
+              ""
+            ]
+          }
+        ],
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
@@ -448,6 +620,72 @@
               "query": " \t\t\t\tSELECT [dwh].[fact_complaints].*   FROM [dwh].[fact_complaints] ",
               "dataSource": "SqlServer Omen TelecomChurn"
             }
+          }
+        ],
+        "measures": [
+          {
+            "name": "total Complaints",
+            "expression": [
+              " ",
+              "CALCULATE(",
+              "    COUNTROWS(fact_complaints),",
+              "    ALLEXCEPT(fact_complaints, fact_complaints[customer_id])",
+              ")",
+              ""
+            ]
+          },
+          {
+            "name": "Unresolved Complaints",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    COUNTROWS(fact_complaints),",
+              "    fact_complaints[status] IN { \"In Progress\", \"Open\" }",
+              ")",
+              ""
+            ]
+          },
+          {
+            "name": "Resolved Complaints",
+            "expression": [
+              "",
+              "        CALCULATE(",
+              "            COUNTROWS(fact_complaints),",
+              "            fact_complaints[status] = \"Resolved\"",
+              "        )"
+            ]
+          },
+          {
+            "name": "Closed Complaints",
+            "expression": [
+              "",
+              "        CALCULATE(",
+              "            COUNTROWS(fact_complaints),",
+              "            fact_complaints[status] = \"Closed\"",
+              "        )",
+              "    "
+            ]
+          },
+          {
+            "name": "In Progress Complaints",
+            "expression": [
+              "",
+              "        CALCULATE(",
+              "            COUNTROWS(fact_complaints),",
+              "            fact_complaints[status] = \"In Progress\"",
+              "        )",
+              "    "
+            ]
+          },
+          {
+            "name": "Open Complaints",
+            "expression": [
+              "",
+              "        CALCULATE(",
+              "            COUNTROWS(fact_complaints),",
+              "            fact_complaints[status] = \"Open\"",
+              "        )"
+            ]
           }
         ],
         "annotations": [
@@ -523,6 +761,30 @@
             }
           }
         ],
+        "measures": [
+          {
+            "name": "Call Drop Rate",
+            "expression": [
+              " ",
+              "DIVIDE(",
+              "    SUM(fact_network_usage[dropped_calls]),",
+              "    SUM(fact_network_usage[total_calls])",
+              ")",
+              ""
+            ]
+          },
+          {
+            "name": "Complaints per Customer",
+            "expression": [
+              " ",
+              "CALCULATE(",
+              "    COUNTROWS(fact_complaints),",
+              "    ALLEXCEPT(fact_complaints, fact_complaints[customer_id])",
+              ")",
+              ""
+            ]
+          }
+        ],
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
@@ -537,22 +799,132 @@
             "value": "dwh"
           }
         ]
+      },
+      {
+        "name": "dim_date",
+        "columns": [
+          {
+            "name": "date_key",
+            "dataType": "string",
+            "sourceColumn": "date_key",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "year",
+            "dataType": "int64",
+            "sourceColumn": "year",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "quarter",
+            "dataType": "int64",
+            "sourceColumn": "quarter",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "month",
+            "dataType": "int64",
+            "sourceColumn": "month",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "month_name",
+            "dataType": "string",
+            "sourceColumn": "month_name",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "day",
+            "dataType": "int64",
+            "sourceColumn": "day",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "day_of_week",
+            "dataType": "int64",
+            "sourceColumn": "day_of_week",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "day_name",
+            "dataType": "string",
+            "sourceColumn": "day_name",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "is_weekend",
+            "dataType": "boolean",
+            "sourceColumn": "is_weekend",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "Boolean"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_date",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [dwh].[dim_date].*   FROM [dwh].[dim_date] ",
+              "dataSource": "SqlServer Omen TelecomChurn"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [dwh].[dim_date].*   FROM [dwh].[dim_date] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "dim_date"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dwh"
+          }
+        ]
       }
     ],
     "relationships": [
       {
-        "name": "443f6934-a444-404c-9b96-139e044fcaf1",
-        "fromTable": "fact_bss_churn_data",
-        "fromColumn": "dim_customer_id",
-        "toTable": "dim_customer",
-        "toColumn": "customerID"
-      },
-      {
-        "name": "48882a6e-3af3-4850-82d1-5e12feddc035",
+        "name": "b68b8272-08de-41e1-9680-1beb8ee29752",
         "fromTable": "fact_network_usage",
         "fromColumn": "customer_id",
         "toTable": "dim_customer",
         "toColumn": "customerID"
+      },
+      {
+        "name": "d4134490-5de5-4c7d-a546-9e8791ff6233",
+        "fromCardinality": "one",
+        "fromTable": "fact_bss_churn_data",
+        "fromColumn": "customerID",
+        "toTable": "dim_customer",
+        "toColumn": "customerID",
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "662002a4-70c2-42a0-896c-ee48ed93ad83",
+        "fromCardinality": "one",
+        "fromTable": "fact_complaints",
+        "fromColumn": "complaint_id",
+        "toTable": "dim_complaint",
+        "toColumn": "complaint_id",
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "69553fd7-7ef0-46c3-959b-190b42c81618",
+        "fromTable": "dim_complaint",
+        "fromColumn": "customerID",
+        "toTable": "dim_customer",
+        "toColumn": "customerID"
+      },
+      {
+        "name": "9d286ba5-b28a-495c-bbad-18ffce208082",
+        "fromTable": "fact_network_usage",
+        "fromColumn": "usage_date",
+        "toTable": "dim_date",
+        "toColumn": "date_key"
       }
     ],
     "annotations": [

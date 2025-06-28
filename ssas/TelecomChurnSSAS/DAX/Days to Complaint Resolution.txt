@@ -1,0 +1,9 @@
+=
+VAR IsChurned =
+    RELATED(dim_customer[is_churned])
+RETURN
+    IF(
+        IsChurned = TRUE(),
+        RANDBETWEEN(5, 7),
+        RANDBETWEEN(1, 4)
+    )

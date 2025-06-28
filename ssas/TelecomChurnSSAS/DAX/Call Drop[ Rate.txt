@@ -1,0 +1,5 @@
+Call Drop Rate:= 
+DIVIDE(
+    SUM(fact_network_usage[dropped_calls]),
+    SUM(fact_network_usage[total_calls])
+)
