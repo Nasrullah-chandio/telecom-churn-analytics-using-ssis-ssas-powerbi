@@ -1,0 +1,937 @@
+{
+  "name": "TelecomChurnSSAS",
+  "compatibilityLevel": 1200,
+  "model": {
+    "culture": "en-US",
+    "dataSources": [
+      {
+        "name": "SqlServer Omen TelecomChurn",
+        "connectionString": "Provider=SQLOLEDB;Data Source=Omen;Integrated Security=SSPI;Persist Security Info=false;Initial Catalog=TelecomChurn",
+        "impersonationMode": "impersonateAccount",
+        "account": "Omen\\nchan",
+        "annotations": [
+          {
+            "name": "ConnectionEditUISource",
+            "value": "SqlServer"
+          }
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "name": "dim_complaint",
+        "columns": [
+          {
+            "name": "complaint_id",
+            "dataType": "string",
+            "sourceColumn": "complaint_id",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "customerID",
+            "dataType": "string",
+            "sourceColumn": "customerID",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "complaint_date",
+            "dataType": "string",
+            "sourceColumn": "complaint_date",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "issue",
+            "dataType": "string",
+            "sourceColumn": "issue",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "status",
+            "dataType": "string",
+            "sourceColumn": "status",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "status_stage",
+            "dataType": "string",
+            "sourceColumn": "status_stage",
+            "sourceProviderType": "Char"
+          },
+          {
+            "type": "calculated",
+            "name": "Latest Date",
+            "expression": [
+              "",
+              "VAR ParsedDates =",
+              "    ADDCOLUMNS(",
+              "        dim_complaint,",
+              "        \"ParsedDate\", TRY(DATEVALUE(dim_complaint[complaint_date]))",
+              "    )",
+              "RETURN",
+              "    MAXX(ParsedDates, [ParsedDate]) + 2",
+              ""
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "Simulated_Resolution_Date",
+            "dataType": "double",
+            "isDataTypeInferred": true,
+            "expression": [
+              "",
+              "VAR IsChurned =",
+              "    RELATED(dim_customer[is_churned])",
+              "VAR RandomOffset =",
+              "    IF(",
+              "        IsChurned = TRUE(),",
+              "        RANDBETWEEN(1, 7),         -- slower resolution for churned",
+              "        RANDBETWEEN(1, 4)          -- faster for non-churned",
+              "    )",
+              "RETURN",
+              "    dim_complaint[complaint_date] + RandomOffset",
+              ""
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "Number of days to complaint resolution",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": [
+              "",
+              "VAR IsChurned =",
+              "    RELATED(dim_customer[is_churned])",
+              "RETURN",
+              "    IF(",
+              "        IsChurned = TRUE(),",
+              "        RANDBETWEEN(5, 7),",
+              "        RANDBETWEEN(1, 4)",
+              "    )",
+              ""
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_complaint",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [dwh].[dim_complaint].*   FROM [dwh].[dim_complaint] ",
+              "dataSource": "SqlServer Omen TelecomChurn"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [dwh].[dim_complaint].*   FROM [dwh].[dim_complaint] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "dim_complaint"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dwh"
+          }
+        ]
+      },
+      {
+        "name": "dim_customer",
+        "columns": [
+          {
+            "name": "customerID",
+            "dataType": "string",
+            "sourceColumn": "customerID",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "gender",
+            "dataType": "string",
+            "sourceColumn": "gender",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "SeniorCitizen",
+            "dataType": "boolean",
+            "sourceColumn": "SeniorCitizen",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "Boolean"
+          },
+          {
+            "name": "Partner",
+            "dataType": "string",
+            "sourceColumn": "Partner",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Dependents",
+            "dataType": "string",
+            "sourceColumn": "Dependents",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "tenure",
+            "dataType": "int64",
+            "sourceColumn": "tenure",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "PhoneService",
+            "dataType": "string",
+            "sourceColumn": "PhoneService",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "MultipleLines",
+            "dataType": "string",
+            "sourceColumn": "MultipleLines",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "InternetService",
+            "dataType": "string",
+            "sourceColumn": "InternetService",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "OnlineSecurity",
+            "dataType": "string",
+            "sourceColumn": "OnlineSecurity",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "OnlineBackup",
+            "dataType": "string",
+            "sourceColumn": "OnlineBackup",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DeviceProtection",
+            "dataType": "string",
+            "sourceColumn": "DeviceProtection",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "TechSupport",
+            "dataType": "string",
+            "sourceColumn": "TechSupport",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "StreamingTV",
+            "dataType": "string",
+            "sourceColumn": "StreamingTV",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "StreamingMovies",
+            "dataType": "string",
+            "sourceColumn": "StreamingMovies",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Contract",
+            "dataType": "string",
+            "sourceColumn": "Contract",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "PaperlessBilling",
+            "dataType": "string",
+            "sourceColumn": "PaperlessBilling",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "PaymentMethod",
+            "dataType": "string",
+            "sourceColumn": "PaymentMethod",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "MonthlyCharges",
+            "dataType": "double",
+            "sourceColumn": "MonthlyCharges",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "TotalCharges",
+            "dataType": "double",
+            "sourceColumn": "TotalCharges",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "is_churned",
+            "dataType": "boolean",
+            "sourceColumn": "is_churned",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "Boolean"
+          },
+          {
+            "type": "calculated",
+            "name": "Churn Flag",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": [
+              " IF(dim_customer[is_churned] = TRUE(), \"Yes\", \"No\")",
+              ""
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "Tenure Group",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": [
+              " ",
+              "SWITCH(",
+              "    TRUE(),",
+              "    [tenure] < 12, \"< 1 year\",",
+              "    [tenure] < 24, \"< 2 years\",",
+              "    [tenure] < 36, \"< 3 years\",",
+              "    [tenure] < 48, \"< 4 years\",",
+              "    [tenure] < 60, \"< 5 years\",",
+              "    [tenure] < 72, \"< 6 years\",",
+              "    \"6+ years\"",
+              ")",
+              ""
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "Number of Complaints per customer",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": [
+              " CALCULATE(",
+              "    COUNTROWS(dim_complaint),",
+              "    FILTER(",
+              "        dim_complaint,",
+              "        dim_complaint[customerID] = dim_customer[customerID]",
+              "    )",
+              ")",
+              ""
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "Number of unresolved complaints per customer",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": [
+              " CALCULATE(",
+              "    COUNTROWS(dim_complaint),",
+              "    FILTER(",
+              "        dim_complaint,",
+              "        dim_complaint[customerID] = EARLIER(dim_customer[customerID]) &&",
+              "        dim_complaint[status] IN { \"Open\", \"In Progress\" }",
+              "    )",
+              ")",
+              ""
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "MonthlyChargesBin",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": [
+              " ",
+              "SWITCH(",
+              "    TRUE(),",
+              "    [MonthlyCharges] < 35, \"Low\",",
+              "    [MonthlyCharges] < 75, \"Medium\",",
+              "    \"High\"",
+              ")",
+              ""
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_customer",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [dwh].[dim_customer].*   FROM [dwh].[dim_customer] ",
+              "dataSource": "SqlServer Omen TelecomChurn"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Total Churned Customers",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    COUNTROWS(dim_customer),",
+              "    dim_customer[is_churned] = TRUE",
+              ")",
+              ""
+            ]
+          },
+          {
+            "name": "Total Customers count",
+            "expression": [
+              " COUNTROWS(dim_customer)",
+              ""
+            ]
+          },
+          {
+            "name": "Churn Rate (%)",
+            "expression": [
+              "",
+              "DIVIDE(",
+              "    [Total Churned Customers],",
+              "    [Total Customers Count]",
+              ") * 100",
+              ""
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [dwh].[dim_customer].*   FROM [dwh].[dim_customer] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "dim_customer"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dwh"
+          }
+        ]
+      },
+      {
+        "name": "dim_network_usage",
+        "columns": [
+          {
+            "name": "date",
+            "dataType": "string",
+            "sourceColumn": "date",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "customer_id",
+            "dataType": "string",
+            "sourceColumn": "customer_id",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "total_calls",
+            "dataType": "int64",
+            "sourceColumn": "total_calls",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "dropped_calls",
+            "dataType": "int64",
+            "sourceColumn": "dropped_calls",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "data_volume_MB",
+            "dataType": "double",
+            "sourceColumn": "data_volume_MB",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "throughput_Mbps",
+            "dataType": "double",
+            "sourceColumn": "throughput_Mbps",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "has_drop",
+            "dataType": "boolean",
+            "sourceColumn": "has_drop",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "Boolean"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_network_usage",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [dwh].[dim_network_usage].*   FROM [dwh].[dim_network_usage] ",
+              "dataSource": "SqlServer Omen TelecomChurn"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [dwh].[dim_network_usage].*   FROM [dwh].[dim_network_usage] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "dim_network_usage"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dwh"
+          }
+        ]
+      },
+      {
+        "name": "fact_bss_churn_data",
+        "columns": [
+          {
+            "name": "customerID",
+            "dataType": "string",
+            "sourceColumn": "customerID",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "SeniorCitizen",
+            "dataType": "int64",
+            "sourceColumn": "SeniorCitizen",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Partner",
+            "dataType": "string",
+            "sourceColumn": "Partner",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Dependents",
+            "dataType": "string",
+            "sourceColumn": "Dependents",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "tenure",
+            "dataType": "int64",
+            "sourceColumn": "tenure",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "MonthlyCharges",
+            "dataType": "double",
+            "sourceColumn": "MonthlyCharges",
+            "sourceProviderType": "Numeric"
+          },
+          {
+            "name": "TotalCharges",
+            "dataType": "double",
+            "sourceColumn": "TotalCharges",
+            "sourceProviderType": "Numeric"
+          },
+          {
+            "name": "churn_status",
+            "dataType": "string",
+            "sourceColumn": "churn_status",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "dim_customer_id",
+            "dataType": "string",
+            "sourceColumn": "dim_customer_id",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "fact_bss_churn_data",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [dwh].[fact_bss_churn_data].*   FROM [dwh].[fact_bss_churn_data] ",
+              "dataSource": "SqlServer Omen TelecomChurn"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Total Customers",
+            "expression": [
+              " DISTINCTCOUNT(fact_bss_churn_data[customerID])",
+              ""
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [dwh].[fact_bss_churn_data].*   FROM [dwh].[fact_bss_churn_data] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "fact_bss_churn_data"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dwh"
+          }
+        ]
+      },
+      {
+        "name": "fact_complaints",
+        "columns": [
+          {
+            "name": "complaint_id",
+            "dataType": "string",
+            "sourceColumn": "complaint_id",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "customer_id",
+            "dataType": "string",
+            "sourceColumn": "customer_id",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "complaint_date",
+            "dataType": "string",
+            "sourceColumn": "complaint_date",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "complaint_type",
+            "dataType": "string",
+            "sourceColumn": "complaint_type",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "status",
+            "dataType": "string",
+            "sourceColumn": "status",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "status_stage",
+            "dataType": "string",
+            "sourceColumn": "status_stage",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "fact_complaints",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [dwh].[fact_complaints].*   FROM [dwh].[fact_complaints] ",
+              "dataSource": "SqlServer Omen TelecomChurn"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "total Complaints",
+            "expression": [
+              " ",
+              "CALCULATE(",
+              "    COUNTROWS(fact_complaints),",
+              "    ALLEXCEPT(fact_complaints, fact_complaints[customer_id])",
+              ")",
+              ""
+            ]
+          },
+          {
+            "name": "Unresolved Complaints",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    COUNTROWS(fact_complaints),",
+              "    fact_complaints[status] IN { \"In Progress\", \"Open\" }",
+              ")",
+              ""
+            ]
+          },
+          {
+            "name": "Resolved Complaints",
+            "expression": [
+              "",
+              "        CALCULATE(",
+              "            COUNTROWS(fact_complaints),",
+              "            fact_complaints[status] = \"Resolved\"",
+              "        )"
+            ]
+          },
+          {
+            "name": "Closed Complaints",
+            "expression": [
+              "",
+              "        CALCULATE(",
+              "            COUNTROWS(fact_complaints),",
+              "            fact_complaints[status] = \"Closed\"",
+              "        )",
+              "    "
+            ]
+          },
+          {
+            "name": "In Progress Complaints",
+            "expression": [
+              "",
+              "        CALCULATE(",
+              "            COUNTROWS(fact_complaints),",
+              "            fact_complaints[status] = \"In Progress\"",
+              "        )",
+              "    "
+            ]
+          },
+          {
+            "name": "Open Complaints",
+            "expression": [
+              "",
+              "        CALCULATE(",
+              "            COUNTROWS(fact_complaints),",
+              "            fact_complaints[status] = \"Open\"",
+              "        )"
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [dwh].[fact_complaints].*   FROM [dwh].[fact_complaints] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "fact_complaints"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dwh"
+          }
+        ]
+      },
+      {
+        "name": "fact_network_usage",
+        "columns": [
+          {
+            "name": "usage_id",
+            "dataType": "int64",
+            "sourceColumn": "usage_id",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "customer_id",
+            "dataType": "string",
+            "sourceColumn": "customer_id",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "usage_date",
+            "dataType": "string",
+            "sourceColumn": "usage_date",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "total_calls",
+            "dataType": "int64",
+            "sourceColumn": "total_calls",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "dropped_calls",
+            "dataType": "int64",
+            "sourceColumn": "dropped_calls",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "call_drop_rate",
+            "dataType": "double",
+            "sourceColumn": "call_drop_rate",
+            "sourceProviderType": "Numeric"
+          },
+          {
+            "name": "has_drop",
+            "dataType": "boolean",
+            "sourceColumn": "has_drop",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "Boolean"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "fact_network_usage",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [dwh].[fact_network_usage].*   FROM [dwh].[fact_network_usage] ",
+              "dataSource": "SqlServer Omen TelecomChurn"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Call Drop Rate",
+            "expression": [
+              " ",
+              "DIVIDE(",
+              "    SUM(fact_network_usage[dropped_calls]),",
+              "    SUM(fact_network_usage[total_calls])",
+              ")",
+              ""
+            ]
+          },
+          {
+            "name": "Complaints per Customer",
+            "expression": [
+              " ",
+              "CALCULATE(",
+              "    COUNTROWS(fact_complaints),",
+              "    ALLEXCEPT(fact_complaints, fact_complaints[customer_id])",
+              ")",
+              ""
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [dwh].[fact_network_usage].*   FROM [dwh].[fact_network_usage] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "fact_network_usage"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dwh"
+          }
+        ]
+      },
+      {
+        "name": "dim_date",
+        "columns": [
+          {
+            "name": "date_key",
+            "dataType": "string",
+            "sourceColumn": "date_key",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "year",
+            "dataType": "int64",
+            "sourceColumn": "year",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "quarter",
+            "dataType": "int64",
+            "sourceColumn": "quarter",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "month",
+            "dataType": "int64",
+            "sourceColumn": "month",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "month_name",
+            "dataType": "string",
+            "sourceColumn": "month_name",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "day",
+            "dataType": "int64",
+            "sourceColumn": "day",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "day_of_week",
+            "dataType": "int64",
+            "sourceColumn": "day_of_week",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "day_name",
+            "dataType": "string",
+            "sourceColumn": "day_name",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "is_weekend",
+            "dataType": "boolean",
+            "sourceColumn": "is_weekend",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "Boolean"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_date",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [dwh].[dim_date].*   FROM [dwh].[dim_date] ",
+              "dataSource": "SqlServer Omen TelecomChurn"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [dwh].[dim_date].*   FROM [dwh].[dim_date] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "dim_date"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dwh"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "b68b8272-08de-41e1-9680-1beb8ee29752",
+        "fromTable": "fact_network_usage",
+        "fromColumn": "customer_id",
+        "toTable": "dim_customer",
+        "toColumn": "customerID"
+      },
+      {
+        "name": "d4134490-5de5-4c7d-a546-9e8791ff6233",
+        "fromCardinality": "one",
+        "fromTable": "fact_bss_churn_data",
+        "fromColumn": "customerID",
+        "toTable": "dim_customer",
+        "toColumn": "customerID",
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "662002a4-70c2-42a0-896c-ee48ed93ad83",
+        "fromCardinality": "one",
+        "fromTable": "fact_complaints",
+        "fromColumn": "complaint_id",
+        "toTable": "dim_complaint",
+        "toColumn": "complaint_id",
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "69553fd7-7ef0-46c3-959b-190b42c81618",
+        "fromTable": "dim_complaint",
+        "fromColumn": "customerID",
+        "toTable": "dim_customer",
+        "toColumn": "customerID"
+      },
+      {
+        "name": "9d286ba5-b28a-495c-bbad-18ffce208082",
+        "fromTable": "fact_network_usage",
+        "fromColumn": "usage_date",
+        "toTable": "dim_date",
+        "toColumn": "date_key"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "400"
+      }
+    ]
+  }
+}

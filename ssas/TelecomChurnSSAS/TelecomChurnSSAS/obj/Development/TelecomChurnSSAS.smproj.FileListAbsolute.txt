@@ -1,0 +1,8 @@
+C:\My_Projects\telecom-churn-analytics-ssis-ssas-pbi\ssas\TelecomChurnSSAS\TelecomChurnSSAS\bin\Model.asdatabase
+C:\My_Projects\telecom-churn-analytics-ssis-ssas-pbi\ssas\TelecomChurnSSAS\TelecomChurnSSAS\bin\Model.deploymenttargets
+C:\My_Projects\telecom-churn-analytics-ssis-ssas-pbi\ssas\TelecomChurnSSAS\TelecomChurnSSAS\bin\Model.deploymentoptions
+C:\My_Projects\telecom-churn-analytics-ssis-ssas-pbi\ssas\TelecomChurnSSAS\TelecomChurnSSAS\obj\Development\TelecomChurnSSAS.smproj.AssemblyReference.cache
+C:\My_Projects\telecom-churn-analytics-ssis-ssas-pbi\ssas\TelecomChurnSSAS\TelecomChurnSSAS\obj\Development\TelecomChurnSSAS.smproj.CoreCompileInputs.cache
+C:\My_Projects\telecom-churn-analytics-ssis-ssas-pbi\ssas\TelecomChurnSSAS\TelecomChurnSSAS\obj\Development\Model.asdatabase
+C:\My_Projects\telecom-churn-analytics-ssis-ssas-pbi\ssas\TelecomChurnSSAS\TelecomChurnSSAS\obj\Development\Model.deploymentoptions
+C:\My_Projects\telecom-churn-analytics-ssis-ssas-pbi\ssas\TelecomChurnSSAS\TelecomChurnSSAS\obj\Development\Model.deploymenttargets

@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "C:\\My_Projects\\telecom-churn-analytics-ssis-ssas-pbi\\ssis\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2351D2E0-8ACC-3E97-6D27-B916BEE3BA5A}|TelecomChurn.dtproj|C:\\My_Projects\\telecom-churn-analytics-ssis-ssas-pbi\\ssis\\load_staging_tables.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
-      "RelativeMoniker": "D:0:0:{2351D2E0-8ACC-3E97-6D27-B916BEE3BA5A}|TelecomChurn.dtproj|solutionrelative:load_staging_tables.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
+      "AbsoluteMoniker": "D:0:0:{2351D2E0-8ACC-3E97-6D27-B916BEE3BA5A}|TelecomChurn.dtproj|C:\\My_Projects\\telecom-churn-analytics-ssis-ssas-pbi\\ssis\\import_complaints_data.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
+      "RelativeMoniker": "D:0:0:{2351D2E0-8ACC-3E97-6D27-B916BEE3BA5A}|TelecomChurn.dtproj|solutionrelative:import_complaints_data.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2351D2E0-8ACC-3E97-6D27-B916BEE3BA5A}|TelecomChurn.dtproj|C:\\My_Projects\\telecom-churn-analytics-ssis-ssas-pbi\\ssis\\load_network_usage.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
       "RelativeMoniker": "D:0:0:{2351D2E0-8ACC-3E97-6D27-B916BEE3BA5A}|TelecomChurn.dtproj|solutionrelative:load_network_usage.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2351D2E0-8ACC-3E97-6D27-B916BEE3BA5A}|TelecomChurn.dtproj|C:\\My_Projects\\telecom-churn-analytics-ssis-ssas-pbi\\ssis\\load_bss_data.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
-      "RelativeMoniker": "D:0:0:{2351D2E0-8ACC-3E97-6D27-B916BEE3BA5A}|TelecomChurn.dtproj|solutionrelative:load_bss_data.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
+      "AbsoluteMoniker": "D:0:0:{2351D2E0-8ACC-3E97-6D27-B916BEE3BA5A}|TelecomChurn.dtproj|C:\\My_Projects\\telecom-churn-analytics-ssis-ssas-pbi\\ssis\\load_staging_tables.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
+      "RelativeMoniker": "D:0:0:{2351D2E0-8ACC-3E97-6D27-B916BEE3BA5A}|TelecomChurn.dtproj|solutionrelative:load_staging_tables.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2351D2E0-8ACC-3E97-6D27-B916BEE3BA5A}|TelecomChurn.dtproj|C:\\My_Projects\\telecom-churn-analytics-ssis-ssas-pbi\\ssis\\import_complaints_data.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
-      "RelativeMoniker": "D:0:0:{2351D2E0-8ACC-3E97-6D27-B916BEE3BA5A}|TelecomChurn.dtproj|solutionrelative:import_complaints_data.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
+      "AbsoluteMoniker": "D:0:0:{2351D2E0-8ACC-3E97-6D27-B916BEE3BA5A}|TelecomChurn.dtproj|C:\\My_Projects\\telecom-churn-analytics-ssis-ssas-pbi\\ssis\\load_bss_data.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
+      "RelativeMoniker": "D:0:0:{2351D2E0-8ACC-3E97-6D27-B916BEE3BA5A}|TelecomChurn.dtproj|solutionrelative:load_bss_data.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,11 +26,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "load_staging_tables.dtsx [Design]",
               "DocumentMoniker": "C:\\My_Projects\\telecom-churn-analytics-ssis-ssas-pbi\\ssis\\load_staging_tables.dtsx",
               "RelativeDocumentMoniker": "load_staging_tables.dtsx",
@@ -54,7 +54,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "import_complaints_data.dtsx [Design]",
               "DocumentMoniker": "C:\\My_Projects\\telecom-churn-analytics-ssis-ssas-pbi\\ssis\\import_complaints_data.dtsx",
               "RelativeDocumentMoniker": "import_complaints_data.dtsx",
@@ -66,7 +66,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "load_bss_data.dtsx [Design]",
               "DocumentMoniker": "C:\\My_Projects\\telecom-churn-analytics-ssis-ssas-pbi\\ssis\\load_bss_data.dtsx",
               "RelativeDocumentMoniker": "load_bss_data.dtsx",
